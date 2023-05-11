@@ -165,3 +165,9 @@ If you want to download the models trained in the paper, please contact the auth
 ## Evaluation
 Script for the evaluation is in `r-workspace/modeling.R`. <br>
 We recommend using [RStudio](https://rstudio.com/) to run the script.
+
+## License
+MIT
+
+## Note
+If you want to download the 2021-03-02 version of the NPCMJ and the models trained in our paper, please contact `yoshiryo0617 [at] g.ecc.u-tokyo.ac.jp`
