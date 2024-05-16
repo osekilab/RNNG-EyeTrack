@@ -1,10 +1,10 @@
 import argparse
 import glob
 import os
-from tqdm import tqdm
 
 from nltk import Tree
 from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 parser = argparse.ArgumentParser()
 
@@ -36,6 +36,8 @@ def main(args):
     ted = []
     textbook = []
     wikipedia = []
+    patent = []
+    whitepaper = []
     for filename in tqdm(file_list):
         if "aozora" in filename:
             with open(filename) as f:
@@ -101,6 +103,14 @@ def main(args):
             with open(filename) as f:
                 for line in f:
                     wikipedia.append(line.rstrip())
+        elif "patent" in filename:
+            with open(filename) as f:
+                for line in f:
+                    patent.append(line.rstrip())
+        elif "whitepaper" in filename:
+            with open(filename) as f:
+                for line in f:
+                    whitepaper.append(line.rstrip())
         else:
             print("Error: {}".format(filename))
 
@@ -121,6 +131,8 @@ def main(args):
         ted,
         textbook,
         wikipedia,
+        patent,
+        whitepaper,
     ]
 
     trains = []
