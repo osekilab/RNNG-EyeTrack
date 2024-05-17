@@ -58,10 +58,27 @@ def _preprocess_tree(tree: Tree) -> Tree:
     return tree
 
 
+def _extract_nonterminals(tree):
+    nonterminals = []
+
+    def traverse(t):
+        if isinstance(t, Tree):
+            nonterminals.append(t.label())
+            for child in t:
+                traverse(child)
+
+    traverse(tree)
+    return nonterminals
+
+
 def preprocess_trees(trees: List[Tree]) -> List[Tree]:
     preprocessed_trees = []
     error_trees = []
     for tree in trees:
+        all_labels = _extract_nonterminals(tree)
+        if "COMMENT" in all_labels:
+            error_trees.append(tree)
+            continue
         try:
             preprocessed_tree = _preprocess_tree(tree)
             preprocessed_trees.append(preprocessed_tree)
