@@ -38,6 +38,7 @@ def main(args):
     wikipedia = []
     patent = []
     whitepaper = []
+    stories = []
     for filename in tqdm(file_list):
         if "aozora" in filename:
             with open(filename) as f:
@@ -111,6 +112,10 @@ def main(args):
             with open(filename) as f:
                 for line in f:
                     whitepaper.append(line.rstrip())
+        elif "stories" in filename:
+            with open(filename) as f:
+                for line in f:
+                    stories.append(line.rstrip())
         else:
             print("Error: {}".format(filename))
 
@@ -133,6 +138,7 @@ def main(args):
         wikipedia,
         patent,
         whitepaper,
+        stories,
     ]
 
     trains = []
